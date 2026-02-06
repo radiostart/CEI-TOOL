@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "board_design_settings": {
+    "constraint_settings": {
+      "min_clearance": 0.20,
+      "min_track_width": 0.15,
+      "min_via_diameter": 0.50,
+      "min_via_drill": 0.30,
+      "min_microvia_diameter": 0.20,
+      "min_microvia_drill": 0.10,
+      "min_annular_ring": 0.15,
+      "min_solder_mask_sliver": 0.10,
+      "solder_mask_expansion": 0.00,
+      "min_copper_edge_clearance": 0.50,
+      "copper_to_hole_clearance": 0.25
+    },
+    "net_classes": [
+      {
+        "name": "Default",
+        "description": "JLCPCB 2-layer 기본 규칙 (신호용)",
+        "clearance": 0.20,
+        "track_width": 0.15,
+        "via_diameter": 0.55,
+        "via_drill": 0.30,
+        "uVia_diameter": 0.20,
+        "uVia_drill": 0.10
+      },
+      {
+        "name": "POWER",
+        "description": "전원 및 GND 메인 라인용 (0.5~1A 수준)",
+        "clearance": 0.20,
+        "track_width": 0.30,
+        "via_diameter": 0.70,
+        "via_drill": 0.35
+      },
+      {
+        "name": "HC_0p5A",
+        "description": "Approx. 0.5A @ 1oz, 외층, ΔT≈10°C",
+        "clearance": 0.20,
+        "track_width": 0.40,
+        "via_diameter": 0.70,
+        "via_drill": 0.35
+      },
+      {
+        "name": "HC_1A",
+        "description": "Approx. 1A @ 1oz, 외층, ΔT≈10°C",
+        "clearance": 0.20,
+        "track_width": 0.80,
+        "via_diameter": 0.80,
+        "via_drill": 0.40
+      },
+      {
+        "name": "HC_2A",
+        "description": "Approx. 2A @ 1oz, 외층, ΔT≈10°C",
+        "clearance": 0.25,
+        "track_width": 1.50,
+        "via_diameter": 1.00,
+        "via_drill": 0.50
+      },
+      {
+        "name": "ESP32_RF",
+        "description": "ESP32 RF 안테나/피드 주변용. 큰 간격, 가급적 비아 최소.",
+        "clearance": 0.50,
+        "track_width": 0.30,
+        "via_diameter": 0.60,
+        "via_drill": 0.30
+      },
+      {
+        "name": "ESP32_RF_GUARD",
+        "description": "안테나 근처 Guard용. GND 쉴드 트랙에 할당하면 좋음.",
+        "clearance": 0.30,
+        "track_width": 0.40,
+        "via_diameter": 0.70,
+        "via_drill": 0.35
+      }
+    ]
+  }
+}

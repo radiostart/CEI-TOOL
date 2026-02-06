@@ -1,0 +1,110 @@
+
+(kicad_symbol_lib (version 20211014) (generator kicad_symbol_editor)
+  (symbol "SMF5.0CA" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (property "Reference" "D" (id 0) (at 0.0 2.54 0)
+      (effects (font (size 1.27 1.27)) (justify bottom))
+    )
+    (property "Value" "SMF5.0CA" (id 1) (at 0.0 -2.54 0)
+      (effects (font (size 1.27 1.27)) (justify top))
+    )
+    (property "Footprint" "SMF5.0CA:SOD-123FL" (id 2) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MF" "Littelfuse Inc." (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Description" "\n                        \n                            9.2V Clamp 21.7A Ipp Tvs Diode Surface Mount SOD-123F\n                        \n" (id 5) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Package" "SOD-123F Littelfuse" (id 6) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Price" "None" (id 7) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "SnapEDA_Link" "https://www.snapeda.com/parts/SMF5.0CA/Littelfuse/view-part/?ref=snap" (id 8) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MP" "SMF5.0CA" (id 9) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Availability" "In Stock" (id 10) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Check_prices" "https://www.snapeda.com/parts/SMF5.0CA/Littelfuse/view-part/?ref=eda" (id 11) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (symbol "SMF5.0CA_0_0"
+      (polyline
+        (pts (xy -2.286 -1.27) (xy -2.286 0.0)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -2.286 0.0) (xy -2.286 1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -0.254 -1.27) (xy -0.762 -1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -0.254 -1.27) (xy -0.254 0.0)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -0.254 0.0) (xy -0.254 1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -0.254 1.27) (xy 0.254 1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -2.286 -1.27) (xy -0.254 0.0)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -0.254 0.0) (xy -2.286 1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 2.286 -1.27) (xy 2.286 0.0)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 2.286 0.0) (xy 2.286 1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 0.254 -1.27) (xy 0.254 0.0)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 0.254 0.0) (xy 0.254 1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 2.286 -1.27) (xy 0.254 0.0)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 0.254 0.0) (xy 2.286 1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 0.254 -1.27) (xy -0.254 -1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 2.286 0.0) (xy 5.08 0.0)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy 0.254 1.27) (xy 0.762 1.27)) (stroke (width 0.1524))
+      )
+      (polyline
+        (pts (xy -2.286 0.0) (xy -5.08 0.0)) (stroke (width 0.1524))
+      )
+      (pin bidirectional line (at -5.08 0.0 0) (length 0)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "P$1"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 5.08 0.0 180.0) (length 0)
+        (name "~"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "P$2"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+  )
+)

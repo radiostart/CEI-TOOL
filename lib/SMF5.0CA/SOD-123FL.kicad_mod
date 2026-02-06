@@ -1,0 +1,89 @@
+(footprint "SOD-123FL"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "<!DOCTYPE html><html><body><h3>SOD-123FL</h3></body></html>")
+	(property "Reference" "REF**"
+		(at 0 -2.5 0)
+		(layer "F.SilkS")
+		(uuid "4aebc7ed-8a8f-4b22-9390-95f0fe76937f")
+		(effects
+			(font
+				(size 0.787402 0.787402)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "SOD-123FL"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "557b8e6a-74d5-4f09-8978-61b7f4f37257")
+		(effects
+			(font
+				(size 0.787402 0.787402)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d4970c55-bc11-47c5-995c-35519b950703")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7fe7b7ab-bce2-457b-ad6d-428d29c64ec7")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1 0.875)
+		(end 1 0.875)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "fd6d2356-86ec-486b-81ba-9f0812aa1b00")
+	)
+	(fp_line
+		(start 1 -0.875)
+		(end -1 -0.875)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "19b02450-7966-4966-9f11-2db52ee220cd")
+	)
+	(pad "P$1" smd rect
+		(at -2.25 0)
+		(size 1.3 1.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "f37be3ed-80be-487f-b5d7-a86048564907")
+	)
+	(pad "P$2" smd rect
+		(at 2.25 0)
+		(size 1.3 1.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "1e6978b3-dfcf-44ba-b99b-f06b190b6fac")
+	)
+	(embedded_fonts no)
+)
