@@ -23,4 +23,6 @@
   (lib (name "PESD5V0S2BT")(type "KiCad")(uri "${KIPRJMOD}/lib/PESD5V0S2BT")(options "")(descr ""))
   (lib (name "532610871")(type "KiCad")(uri "${KIPRJMOD}/lib/532610871")(options "")(descr ""))
   (lib (name "LTST-S270KRKT")(type "KiCad")(uri "${KIPRJMOD}/lib/LTST-S270KRKT")(options "")(descr ""))
+  (lib (name "532610271")(type "KiCad")(uri "${KIPRJMOD}/lib/532610271")(options "")(descr ""))
+  (lib (name "SMF5.0A")(type "KiCad")(uri "${KIPRJMOD}/lib/SMF5.0A")(options "")(descr ""))
 )
