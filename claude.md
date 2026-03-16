@@ -20,7 +20,7 @@ BakeTrack IoT 환경 모니터링 기기의 하드웨어 회로 설계 프로젝
 | U2 | XC6220B331PR-G | Torex | 3.3V LDO 레귤레이터 (1A, SOT-89-5) |
 | U3 | BQ24075RGTT | Texas Instruments | 1-cell Li-ion 충전 IC (Power Path, VQFN-16) |
 | U4 | USBLC6-2SC6 | STMicroelectronics | USB ESD 보호 (SOT-23-6) |
-| D2 | PESD5V0S2BT | NXP | USB 데이터 ESD 보호 (SOT-23) |
+| D2 | PESD5V0S2BT | NXP | I2C ESD 보호 (SOT-23) |
 | D1 | SMBJ5.0A | — | VBUS TVS 다이오드 (DO-214AA) |
 | D4 | SMF5.0A | — | 전원 TVS 다이오드 (SOD-123FL) |
 | F1 | 0603L100SLYR | Littelfuse | PTC 퓨즈 (6V, 1A hold, 0603) |
@@ -32,17 +32,17 @@ BakeTrack IoT 환경 모니터링 기기의 하드웨어 회로 설계 프로젝
 
 | GPIO | KiCad Pin | Net Label | 기능 | 회로 상세 |
 |------|-----------|-----------|------|-----------|
-| GPIO0 | 12 | I2C_SDA | SHT-45 센서 데이터 | 4.7k pull-up (R10), JST SH 4핀 (J4) |
-| GPIO1 | 13 | I2C_SCL | SHT-45 센서 클럭 | 4.7k pull-up (R8), JST SH 4핀 (J4) |
+| GPIO0 | 12 | I2C_SDA | SHT4x 센서 데이터 | 2.2k pull-up (R10), JST SH 4핀 (J4) |
+| GPIO1 | 13 | I2C_SCL | SHT4x 센서 클럭 | 2.2k pull-up (R8), JST SH 4핀 (J4) |
 | GPIO2 | 5 | MCU-(GPIO2) | 배터리 전압 ADC (ADC1_CH2) | 분압: R2(47k)+R1(47k), R15(1k) 직렬, C11(0.47uF) 필터 |
 | GPIO3 | 6 | MAIN_BTN | 메인 버튼 (Active LOW) | RTC GPIO, 딥슬립 웨이크업 지원 |
 | GPIO4 | 18 | SPI_RST | E-Paper 리셋 | 풀업 (R17, 47k → 3.3V) |
-| GPIO5 | 19 | SPI_CS | E-Paper 칩 셀렉트 | 풀업 (R16, 47k) |
+| GPIO5 | 19 | USB_PGOOD | BQ24075 전원 양호 신호 | Open-drain, LOW=USB 연결 |
 | GPIO6 | 20 | SPI_CLK | E-Paper SPI 클럭 | |
 | GPIO7 | 21 | SPI_MOSI(DIN) | E-Paper SPI 데이터 | |
 | GPIO8 | 22 | (no label) | Boot strap | 10k pull-up (R22) → SPI 부트 |
 | GPIO9 | 23 | BOOT_BTN | 다운로드 모드 버튼 (S3) | Active LOW |
-| GPIO10 | 16 | USB_PGOOD | BQ24075 전원 양호 신호 | Open-drain, LOW=USB 연결 |
+| GPIO10 | 16 | SPI_CS | E-Paper 칩 셀렉트 | 풀업 (R16, 47k) |
 | GPIO18 | 26 | USB_D- | USB Type-C 데이터 | 22ohm 직렬 (R12,R14), ESD 보호 (U4, D2) |
 | GPIO19 | 27 | USB_D+ | USB Type-C 데이터 | 22ohm 직렬 (R18,R19), ESD 보호 (U4, D2) |
 | GPIO20 | 30 | SPI_BUSY | E-Paper BUSY 신호 | HIGH = Busy |
@@ -79,7 +79,7 @@ USB Type-C (VBUS 5V)
     ├── F1 (PTC 1A) → D1 (TVS SMBJ5.0A) → VBUS rail
     │                                         │
     │                                    U3 (BQ24075)
-    │                                    ├── USB_PGOOD → GPIO10
+    │                                    ├── USB_PGOOD → GPIO5
     │                                    ├── CHG_LED → D3 (Red) + R21 (2.2k)
     │                                    └── BAT ←→ J3 (Li-ion 3.7V)
     │                                         │
@@ -193,13 +193,14 @@ CEI-TOOL/
 
 ## 설계 참고사항
 
-- ESP32-C3 RTC GPIO: GPIO0~5만 해당. 딥슬립 웨이크업은 GPIO3(MAIN_BTN)만 가능. GPIO10(USB_PGOOD)은 RTC GPIO 아님
+- ESP32-C3 RTC GPIO: GPIO0~5만 해당. 딥슬립 웨이크업은 GPIO3(MAIN_BTN)만 가능. GPIO5(USB_PGOOD)는 RTC GPIO이나 웨이크업 미사용
 - 사용 가능한 GPIO를 전부 사용 중 — 여유 핀 없음 (GPIO0~10, 18~21)
-- I2C 풀업 4.7k: 케이블 최대 1.5m 대응 (50kHz 클럭)
-- SPI_RST(GPIO4)는 R17(47k)로 풀업, SPI_CS(GPIO5)는 R16(47k)로 풀업
+- I2C 풀업 2.2k: 외부 프로브 케이블 최대 1.5m 대응 (50kHz 클럭), PESD5V0S2BT ESD 보호
+- SPI_RST(GPIO4)는 R17(47k)로 풀업, SPI_CS(GPIO10)는 R16(47k)로 풀업
+- USB_PGOOD는 GPIO5로 변경 (기존 GPIO10에서 스왑)
 - USB Type-C는 CC1/CC2에 5.1k 풀다운으로 Sink/UFP 모드 고정
 - 충전 전류 ~500mA는 R5(1.8k)로 설정 (BQ24075 ISET 핀)
 - 보드 4개 마운팅 홀로 케이스 고정
 - 배터리: BMS 내장 배터리 팩 사용 (외부 보호 회로 별도 미설치)
-- LDO U2(XC6220B): 최대 1A 출력으로 ESP32-C3 WiFi TX 피크(~350mA)에 충분한 여유
+- LDO U2(XC6220B): 최대 1A 출력으로 ESP32-C3 WiFi TX 피크(~350mA)에 충분한 여유. VIN 디커플링 C4(10uF) + C14(22uF) 병렬
 - E-Paper 디스플레이: 2.13인치 BW 250×122px (SSD1680 컨트롤러), J2 Molex 8핀 연결
